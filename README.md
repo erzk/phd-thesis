@@ -37,6 +37,8 @@ wav2avg('xxxxxxx_self_01.wav', 16384)
 ```
 
 ## Brainstem Toolbox:
+[Download BT](http://www.brainvolts.northwestern.edu/form/freeware.php)
+
 1.	Start by typing `bt_ptgui` in Matlab
 2.	Load the response (avg), stimulus (avg), and adjust the settings.
 3.	Excel output is saved in /output_files
