@@ -30,7 +30,7 @@ bt_txt2avg('perc-fall.txt', 16384, -49, 250)
 Use the script: `txt2avg_script.m`
 
 ## Create .avg files from .wav – for using in BT2008/2013
-1.	Go to BT2008 folder
+1.	BT2008 must be the current Matlab folder
 2.	Use the command 
 ```
 wav2avg('xxxxxxx_self_01.wav', 16384)
@@ -39,6 +39,6 @@ wav2avg('xxxxxxx_self_01.wav', 16384)
 ## Brainstem Toolbox:
 [Download BT](http://www.brainvolts.northwestern.edu/form/freeware.php)
 
-1.	Start by typing `bt_ptgui` in Matlab
+1.	Start the GUI by typing `bt_ptgui` in Matlab
 2.	Load the response (avg), stimulus (avg), and adjust the settings.
 3.	Excel output is saved in /output_files
