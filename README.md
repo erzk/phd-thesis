@@ -6,8 +6,16 @@
 3.	The files are saved in the L0n folders in the current Matlab folder.
 
 ## Create Grand Averages:
-1.	Create new folder with the relevant txt files
-2.	Run `makeGA.m` (modify the source folder)
+1.	Create new folders with the relevant txt files
+2.	Run `makeGA.m` (modify the source folder) - type `makeGA` on the command line
+
+## Run FFT
+1. Basic version: `doFFT.m`
+2. Loop: `doFFT_eryk_loop.m`
+3. Extracts 10% at the beginning, middle, and end of each file: `doFFT_eryk_loop_percentage_bme_onAVG.m`
+
+## Transform .mat output to .txt files
+1. Use `mat2txt.m`
 
 ## Plot Grand Averages:
 1.	Plot the averages from .mat files using `load_and_plot_GAs.m`
