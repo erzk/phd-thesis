@@ -38,7 +38,7 @@ bt_txt2avg('perc-fall.txt', 16384, -49, 250)
 Use the script: `txt2avg_script.m`
 
 ## Audio analysis
-1. Run `annotate_export_split_SFS.bat` to annotate, extract duration of annotated utterances to a csv file, and split the annotated continuous file into short wav files based on delimeters of annotations.
+1. Run `annotate_export_split_SFS.bat` to annotate, extract durations of annotated utterances to a csv file, and split the annotated continuous file into short wav files based on delimeters of annotations.
 2. Split wav files will be used in [PraatR](http://www.aaronalbin.com/praatr/index.htm) to extract pitch values
 
 ## Create .avg files from .wav – for using in BT2008/2013
