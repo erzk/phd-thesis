@@ -47,6 +47,7 @@ Use the script: `txt2avg_script.m`
 ```
 wav2avg('xxxxxxx_self_01.wav', 16384)
 ```
+The sampling rate of stimulus and response avg file has to be the same.
 
 ## Brainstem Toolbox:
 [Download BT](http://www.brainvolts.northwestern.edu/form/freeware.php)
