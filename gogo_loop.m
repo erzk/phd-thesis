@@ -3,7 +3,7 @@
 % Baseline -49 1 (self-prod); 50 101 (all the rest)
 % A32-Cz; A31-Fz
 
-% Specify the folder where L0n folders are located
+% Specify the folder where L0k folders are located
 path = 'H:\';
 
 for k = 1:6
