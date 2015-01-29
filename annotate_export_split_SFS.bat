@@ -9,7 +9,7 @@ set filename=%trial%-NAME-%condition%
 REM transform wav files into sfs
 cnv2sfs -i 1 %filename%.wav %filename%.sfs
 REM create annotations http://www.phon.ucl.ac.uk/resource/sfs/help/man/npoint.htm
-npoint -n 1500 -b -0.07 -l da-%condition% %filename%.sfs
+npoint -n 1500 -b -0.07 -l da-%trial%-%condition% %filename%.sfs
 REM export annotations to a csv file
 anlist %filename%.sfs -C > %filename%.csv
 REM split the continuous wav file into short wav files based on the delimiters created by npoint
