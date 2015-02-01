@@ -1,4 +1,4 @@
-# phd-thesis
+# PhD thesis - analysis guidelines
 
 ## Filter raw bdf files:
 1.	Run `gogo_loop.m` – use different baseline for self-production (-49 1) than other conditions (50 101). Epoch -49 350 is fine.
