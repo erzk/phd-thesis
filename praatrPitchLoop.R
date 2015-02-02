@@ -5,7 +5,7 @@
 #' ---
 
 # Documentation: http://www.aaronalbin.com/praatr/tutorial.html
-# loop through all the files in a directory
+# loop through all the files in a directory to extract duration, minimum/maximum pitch values, save to a csv
 library("PraatR")
 library("phonTools")
 
