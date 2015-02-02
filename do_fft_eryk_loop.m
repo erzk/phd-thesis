@@ -11,7 +11,7 @@ for k = 1:6
     % Specify the tone
     tone = 'rise'; %{fall, rise}
     full_name = strcat('0',subject,'-',condition,'-',tone);
-    %specify the file name to load
+    % Specify the file name to load
     fileName = (strcat('0',num2str(k),'-',condition,'-',tone,'_rerefEXG2_70to2000_epoch(2to250)_average.txt'));
    
     responsef = textread(fileName);
