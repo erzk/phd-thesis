@@ -1,7 +1,7 @@
 #' ---
 #' title: "PraatR Pitch Loop"
 #' author: "Eryk Walczak"
-#' date: "February 2nd, 2015"
+#' date: "February 3rd, 2015"
 #' ---
 
 # Documentation: http://www.aaronalbin.com/praatr/tutorial.html
@@ -45,8 +45,11 @@ for (i in filenames) {
   print(wavDuration)
   duration <- append(duration, wavDuration)
   # create the pitch track
+  # http://www.fon.hum.uva.nl/praat/manual/Sound__To_Pitch___.html
   praat("To Pitch...", 
-        arguments=list(0, 75, 600), 
+        arguments=list(0, # time step (s)
+                       75, # pitch floor (Hz)
+                       600), # pitch ceiling (Hz)
         input=FullPath(i), 
         output=FullPath("pitch_track"), 
         overwrite=TRUE
@@ -70,8 +73,35 @@ for (i in filenames) {
   print(maxPitch)
   maximumPitch <- append(maximumPitch, maxPitch)
   # get the time of minimum pitch
+  minPitch <- as.numeric(praat("Get minimum...", 
+                               arguments=list(0, 
+                                              0, 
+                                              "Hertz", 
+                                              "Parabolic"), 
+                               input=FullPath("pitch_track"), 
+                               simplify=TRUE
+                               )
+                         )
+  print(minPitch)
+  minimumPitch <- append(minimumPitch, minPitch)
+  # get the maximum pitch
+  maxPitch <- as.numeric(praat("Get maximum...", 
+                               arguments=list(0, 
+                                              0, 
+                                              "Hertz", 
+                                              "Parabolic"), 
+                               input=FullPath("pitch_track"), 
+                               simplify=TRUE
+                               )
+                         )
+  print(maxPitch)
+  maximumPitch <- append(maximumPitch, maxPitch)
+  # get the time of minimum pitch
   timeMinPitch <- as.numeric(praat("Get time of minimum...", 
-                                   arguments=list(0, 0, "Hertz", "Parabolic"), 
+                                   arguments=list(0, 
+                                                  0, 
+                                                  "Hertz", 
+                                                  "Parabolic"), 
                                    input=FullPath("pitch_track"), 
                                    simplify=TRUE
                                    )
@@ -80,7 +110,10 @@ for (i in filenames) {
   timeMinimumPitch <- append(timeMinimumPitch, timeMinPitch)
   # get the time of maximum pitch
   timeMaxPitch <- as.numeric(praat("Get time of maximum...", 
-                                   arguments=list(0, 0, "Hertz", "Parabolic"), 
+                                   arguments=list(0, 
+                                                  0, 
+                                                  "Hertz", 
+                                                  "Parabolic"), 
                                    input=FullPath("pitch_track"), 
                                    simplify=TRUE
                                    )
@@ -89,14 +122,18 @@ for (i in filenames) {
   timeMaximumPitch <- append(timeMaximumPitch, timeMaxPitch)
   # create the intensity
   praat("To Intensity...", 
-        list(100, 0, "yes"), 
+        list(100, 
+             0, 
+             "yes"), 
         input=FullPath(i), 
         output = FullPath("intensity"), 
         overwrite=TRUE
         )
   # get 25th quantile
   quantileInt <- praat("Get quantile...", 
-                       list(0, 0, 0.25), 
+                       list(0, 
+                            0, 
+                            0.25), 
                        input=FullPath("intensity")
                        )
   # quantile output is a string 'nnn dB' - might need to use stringr/gsub/as.numeric
