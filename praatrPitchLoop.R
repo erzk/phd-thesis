@@ -23,7 +23,8 @@ FullPath <- function(FileName){
 # find all wav files
 filenames <- list.files(path = workingDirectory, pattern = "*.wav$")
 
-# create anempty vector
+# create an empty vector
+# TO DO: create an empty data frame
 duration <- vector()
 minimumPitch <- vector()
 maximumPitch <- vector()
@@ -56,28 +57,10 @@ for (i in filenames) {
         )
   # get the minimum pitch
   minPitch <- as.numeric(praat("Get minimum...", 
-                               arguments=list(0, 0, "Hertz", "Parabolic"), 
-                               input=FullPath("pitch_track"), 
-                               simplify=TRUE
-                               )
-                         )
-  print(minPitch)
-  minimumPitch <- append(minimumPitch, minPitch)
-  # get the maximum pitch
-  maxPitch <- as.numeric(praat("Get maximum...", 
-                               arguments=list(0, 0, "Hertz", "Parabolic"), 
-                               input=FullPath("pitch_track"), 
-                               simplify=TRUE
-                               )
-                         )
-  print(maxPitch)
-  maximumPitch <- append(maximumPitch, maxPitch)
-  # get the time of minimum pitch
-  minPitch <- as.numeric(praat("Get minimum...", 
-                               arguments=list(0, 
-                                              0, 
-                                              "Hertz", 
-                                              "Parabolic"), 
+                               arguments=list(0, # time range (s) start (0 = all)
+                                              0, # time range (s) end (0 = all)
+                                              "Hertz", # unit
+                                              "Parabolic"), # interpolation
                                input=FullPath("pitch_track"), 
                                simplify=TRUE
                                )
@@ -98,10 +81,10 @@ for (i in filenames) {
   maximumPitch <- append(maximumPitch, maxPitch)
   # get the time of minimum pitch
   timeMinPitch <- as.numeric(praat("Get time of minimum...", 
-                                   arguments=list(0, 
-                                                  0, 
-                                                  "Hertz", 
-                                                  "Parabolic"), 
+                                   arguments=list(0, # time range (s) start (0 = all)
+                                                  0, # time range (s) end (0 = all)
+                                                  "Hertz", # unit
+                                                  "Parabolic"), # interpolation
                                    input=FullPath("pitch_track"), 
                                    simplify=TRUE
                                    )
@@ -122,18 +105,18 @@ for (i in filenames) {
   timeMaximumPitch <- append(timeMaximumPitch, timeMaxPitch)
   # create the intensity
   praat("To Intensity...", 
-        list(100, 
-             0, 
-             "yes"), 
+        list(100, # minimum pitch (Hz)
+             0, # time step (s)
+             "yes"), # subtract mean
         input=FullPath(i), 
         output = FullPath("intensity"), 
         overwrite=TRUE
         )
   # get 25th quantile
   quantileInt <- praat("Get quantile...", 
-                       list(0, 
-                            0, 
-                            0.25), 
+                       list(0, # time range (s) start 
+                            0, # time range (s) end
+                            0.25), # quantile (0-1)
                        input=FullPath("intensity")
                        )
   # quantile output is a string 'nnn dB' - might need to use stringr/gsub/as.numeric
