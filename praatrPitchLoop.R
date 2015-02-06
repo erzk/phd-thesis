@@ -1,20 +1,29 @@
 #' ---
-#' title: "PraatR Pitch Loop"
+#' title: "PraatR Pitch Analysis Loop"
 #' author: "Eryk Walczak"
-#' date: "February 5th, 2015"
 #' ---
 
 # Documentation: http://www.aaronalbin.com/praatr/tutorial.html
-# loop through all the files in a directory to extract duration, minimum/maximum pitch values, save to a csv
+# loop through all the files in a directory
 library("PraatR")
 library("phonTools")
 
-participant <- "NAME"
+# define the participant/folder/output file name
+participant <- "testLoop"
 trial <- "01"
-outputFileName <- paste(participant, "_", trial, ".csv", sep="")
 
-workingDirectory <- "C:/Users/E/Desktop/test_audio/NAME/01"
+# output files are appended
+outputFileName <- paste(participant, "_append", ".csv", sep="")
+# output files are separate
+# outputFileName <- paste(participant, "_", trial, ".csv", sep="")
+
+# define output directory
+dirOutput <- file.path("C:", "Users", "E", "Desktop", "test_audio")
+
+# set the working directory
+workingDirectory <- file.path("C:", "Users", "E", "Desktop", "test_audio", participant, trial)
 setwd(workingDirectory)
+
 # define a function to paste dir and filename
 FullPath <- function(FileName){ 
   return( paste(workingDirectory, "/", FileName, sep="") ) 
@@ -29,9 +38,13 @@ minimumPitch <- vector()
 maximumPitch <- vector()
 timeMinimumPitch <- vector()
 timeMaximumPitch <- vector()
-quantileInteger <- vector()
+quantileNumeric <- vector()
 wavFilename <- vector()
 
+# measure processing time
+ptm <- proc.time()
+
+# TO DO use a vector instead of the for loop
 for (i in filenames) {
   # Try the wavFile for errors (e.g. empty wav file)
   tryit <- try(wavFile <- loadsound(i))
@@ -44,7 +57,7 @@ for (i in filenames) {
     maximumPitch <- append(maximumPitch, NA)
     timeMinimumPitch <- append(timeMinimumPitch, NA)
     timeMaximumPitch <- append(timeMaximumPitch, NA)
-    quantileInteger <- append(quantileInteger, NA)
+    quantileNumeric <- append(quantileNumeric, NA)
   } else {
     # create plots
 #     plot(wavFile)
@@ -58,7 +71,7 @@ for (i in filenames) {
                                     simplify=TRUE 
     ) 
     )
-    print(wavDuration)
+#     print(wavDuration)
     duration <- append(duration, wavDuration)
     # create the pitch track
     # http://www.fon.hum.uva.nl/praat/manual/Sound__To_Pitch___.html
@@ -87,7 +100,7 @@ for (i in filenames) {
                                  simplify=TRUE
     )
     )
-    print(minPitch)
+#     print(minPitch)
     minimumPitch <- append(minimumPitch, minPitch)
     # get the maximum pitch
     maxPitch <- as.numeric(praat("Get maximum...", 
@@ -99,7 +112,7 @@ for (i in filenames) {
                                  simplify=TRUE
     )
     )
-    print(maxPitch)
+#     print(maxPitch)
     maximumPitch <- append(maximumPitch, maxPitch)
     # get the time of minimum pitch
     timeMinPitch <- as.numeric(praat("Get time of minimum...", 
@@ -111,7 +124,7 @@ for (i in filenames) {
                                      simplify=TRUE
     )
     )
-    print(timeMinPitch)
+#     print(timeMinPitch)
     timeMinimumPitch <- append(timeMinimumPitch, timeMinPitch)
     # get the time of maximum pitch
     timeMaxPitch <- as.numeric(praat("Get time of maximum...", 
@@ -123,7 +136,7 @@ for (i in filenames) {
                                      simplify=TRUE
     )
     )
-    print(timeMaxPitch)
+#     print(timeMaxPitch)
     timeMaximumPitch <- append(timeMaximumPitch, timeMaxPitch)
     # create the intensity
     praat("To Intensity...", 
@@ -141,15 +154,15 @@ for (i in filenames) {
                               0.25), # quantile (0-1)
                          input=FullPath("intensity")
     )
-    # quantileInt is a string 'nnn dB'. Here it's changed into numeric.
+    # quantileInt is a string 'nnn dB'. Here it's changed into a numeric.
     quantileInt <- as.numeric(
-      #sub removes the last word
+      # sub removes the last word
       sub(
         quantileInt, pattern = " [[:alpha:]]*$", replacement = ""
       )
     )
-    print(quantileInt)
-    quantileInteger <- append(quantileInteger, quantileInt)
+#     print(quantileInt)
+    quantileNumeric <- append(quantileNumeric, quantileInt)
   }
   
 }
@@ -160,7 +173,7 @@ results <- data.frame(wavFilename,
                       maximumPitch, 
                       timeMinimumPitch, 
                       timeMaximumPitch,
-                      quantileInteger,
+                      quantileNumeric,
                       participant,
                       trial)
 
@@ -178,4 +191,20 @@ print(durationPitchTimes)
 mean(cleanResults$duration)-durationPitchTimes
 
 # save to a csv
-write.csv(results, file = outputFileName)
+# write.csv(results, file = file.path(dirOutput, outputFileName))
+write.table(results, 
+            file = file.path(dirOutput, outputFileName), 
+            sep=",", 
+            append = TRUE, 
+            row.names = FALSE,
+            # don't append column names if the file exists
+            col.names=!file.exists(file.path
+                                   (dirOutput, outputFileName)
+                                   )
+            )
+
+# processing time
+proc.time() - ptm
+
+# Praat will not compute F0 values in the first or last 20 ms (or so) of each piece. 
+# This is because the analysis requires a window of 40 ms (or so) for every pitch frame. 
