@@ -175,8 +175,9 @@ results <- data.frame(wavFilename,
                       timeMaximumPitch,
                       quantileNumeric,
                       participant,
-                      trial)
-
+                      trial,
+                      stringsAsFactors = FALSE)
+                      
 # remove NAs
 cleanResults <- results[complete.cases(results),]
 
