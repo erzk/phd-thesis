@@ -4,6 +4,7 @@
 #' ---
 
 library(ggplot2)
+library(gridExtra)
 
 # Load pitch data 
 # set the working directory
@@ -14,6 +15,8 @@ NatCh <- read.csv("all_natCH_pitch.csv")
 NatEn <- read.csv("all_natEN_pitch.csv")
 
 # TO DO(?): merge two DFs?
+
+# TO DO: count NAs/ make histograms
 
 # remove NAs
 cleanNatCh <- NatCh[complete.cases(NatCh),]
@@ -41,15 +44,32 @@ cleanNatCh$trial <- as.character(cleanNatCh$trial)
 cleanNatEn$trial <- as.character(cleanNatEn$trial)
 
 # plot min/max pitch
-plot1C <- qplot(minimumPitch, maximumPitch, data = cleanNatCh, colour = trial)
-plot1C
+plot1C <- 
+  qplot(minimumPitch, maximumPitch, data = cleanNatCh, colour = trial) + 
+  ggtitle("Pitch Chinese")
 
-plot1E <- qplot(minimumPitch, maximumPitch, data = cleanNatEn, colour = trial)
-plot1E
+plot1E <- 
+  qplot(minimumPitch, maximumPitch, data = cleanNatEn, colour = trial) + 
+  ggtitle("Pitch English")
+
+grid.arrange(plot1C, plot1E, ncol=2)
 
 # boxplots
-qplot(trial, minimumPitch, data = cleanNatCh, geom="boxplot", colour = trial, ylim=c(0,600))
-qplot(trial, maximumPitch, data = cleanNatCh, geom="boxplot", colour = trial, ylim=c(0,600))
+boxMinC <- 
+  qplot(trial, minimumPitch, data = cleanNatCh, geom="boxplot", colour = trial, ylim=c(0,600)) + 
+  ggtitle("Minimum pitch Chinese")
+boxMaxC <- 
+  qplot(trial, maximumPitch, data = cleanNatCh, geom="boxplot", colour = trial, ylim=c(0,600)) + 
+  ggtitle("Maximum pitch Chinese")
 
-qplot(trial, minimumPitch, data = cleanNatEn, geom="boxplot", colour = trial, ylim=c(0,600))
-qplot(trial, maximumPitch, data = cleanNatEn, geom="boxplot", colour = trial, ylim=c(0,600))
+boxMinE <- 
+  qplot(trial, minimumPitch, data = cleanNatEn, geom="boxplot", colour = trial, ylim=c(0,600)) + 
+  ggtitle("Minimum pitch English")
+boxMaxE <- 
+  qplot(trial, maximumPitch, data = cleanNatEn, geom="boxplot", colour = trial, ylim=c(0,600)) + 
+  ggtitle("Maximum pitch English")
+
+# print out
+# png("foo.png")
+grid.arrange(boxMinC, boxMinE, boxMaxC, boxMaxE, ncol=2)
+# dev.off()
