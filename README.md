@@ -21,7 +21,7 @@
 1.	Plot the averages from .mat files using `load_and_plot_GAs.m`
 
 ## Create plots for individual FFRs:
-1.	Plot individual files using .avg files (created with Tim’s script) using `plot_AVGs_no_loop.m`
+1.	Plot individual files using .avg files (created with Tim’s script) using `ffr_plot_ind_loop.R`
 
 ## Create .avg files to be used in BrainstemToolbox:
 1.	Find .mat files created by `makeGA.m`
