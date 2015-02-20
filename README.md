@@ -56,3 +56,6 @@ The sampling rate of stimulus and response avg file has to be the same.
 1.	Start the GUI by typing `bt_ptgui` in Matlab
 2.	Load the response (avg), stimulus (avg), and adjust the settings.
 3.	Excel output is saved in /output_files
+
+## Cortical analysis
+1. Make ERPs (without ICA) using `makeERPs.m`
