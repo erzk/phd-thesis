@@ -54,14 +54,14 @@ fprintf('==========Starting subject %d: %s%s%s==========\n', s, subject_list{s},
     %pop_eegplot( EEG, 1, 1, 1);
     EEG = eeg_checkset( EEG );
     %EEG = pop_saveset( EEG, 'filename',[subject condition '_elist_be_filt'],'filepath', parentfolder); % save before running ICA
-	EEG = pop_artmwppth( EEG , 'Channel',  1:12, 'Flag',  1, 'Review', 'on', 'Threshold',  50, 'Twindow', [ -150 350], 'Windowsize',  200, 'Windowstep',  20 );
+    EEG = pop_artmwppth( EEG , 'Channel',  1:12, 'Flag',  1, 'Review', 'on', 'Threshold',  50, 'Twindow', [ -150 350], 'Windowsize',  200, 'Windowstep',  20 );
     EEG = eeg_checkset( EEG );
     EEG = pop_artstep( EEG , 'Channel',  1:12, 'Flag',  1, 'Review', 'on', 'Threshold',  15, 'Twindow', [ -150 350], 'Windowsize',  400, 'Windowstep',  10 );
     pop_summary_AR_eeg_detection(EEG, [parentfolder subject condition participant '_AR_summary_ad.txt']);
     eeglab redraw;
-    EEG = pop_saveset( EEG, 'filename',[subject condition participant '_cleaned'],'filepath',parentfolder);
-	% MAKE ERPs
-	EEG = eeg_checkset( EEG );
+    EEG = pop_saveset( EEG, 'filename',[subject condition participant '_cleaned'],'filepath', parentfolder);
+    % MAKE ERPs
+    EEG = eeg_checkset( EEG );
     ERP = pop_averager( EEG , 'Criterion', 'good', 'DSindex', 1, 'SEM', 'on' );
     ERP = pop_savemyerp(ERP, 'erpname', [subject condition participant], 'filename', [subject condition participant '.erp'], 'filepath', parentfolder, 'warning', 'on');
     EEG = eeg_checkset( EEG );
