@@ -24,9 +24,7 @@
 1.	Plot individual files using .avg files (created with Tim’s script) using `ffr_plot_ind_loop.R`
 
 ## Create .avg files to be used in BrainstemToolbox:
-1.	Find .mat files created by `makeGA.m`
-2.	Extract txt file from .mat averages. Open average mat file > then YAvg > copy and paste to a txt file
-3.	Use `bt_txt2avg` in BT2008
+1.	Use `bt_txt2avg.m` in BT2008
 ```
 bt_txt2avg('filename.txt', 6855, -15.8, 58.89)
 ```
