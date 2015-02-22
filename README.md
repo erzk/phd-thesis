@@ -12,7 +12,7 @@
 
 ## Create Grand Averages:
 ### In R:
-1. 
+1. Use `ffr_averages.R`
 ### In Matlab:
 1.	Create new folders with the relevant txt files - use `copy_all_type.bat`
 2.	Run `makeGA.m` (modify the source folder) - type `makeGA` on the command line
