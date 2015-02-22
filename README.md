@@ -11,6 +11,9 @@
 3.	The files are saved in the L0n folders in the current Matlab folder.
 
 ## Create Grand Averages:
+### In R:
+1. 
+### In Matlab:
 1.	Create new folders with the relevant txt files - use `copy_all_type.bat`
 2.	Run `makeGA.m` (modify the source folder) - type `makeGA` on the command line
 
