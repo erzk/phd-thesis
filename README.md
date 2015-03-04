@@ -52,6 +52,14 @@ wav2avg('xxxxxxx_self_01.wav', 16384)
 ```
 The sampling rate of stimulus and response avg file has to be the same.
 
+## Create .wav files from .txt (FFRs):
+1. In R:
+```
+library(seewave)
+
+savewav(FFR_vector, f = 16384)
+```
+
 ## Brainstem Toolbox:
 [Download BT](http://www.brainvolts.northwestern.edu/form/freeware.php)
 
