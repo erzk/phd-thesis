@@ -69,3 +69,4 @@ savewav(FFR_vector, f = 16384)
 
 ## Cortical analysis
 1. Make ERPs (without ICA) using `makeERPs.m`
+2. Run ICA on filtered/epoched data using `ICA_loop_catch.m`
