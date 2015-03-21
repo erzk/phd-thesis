@@ -77,15 +77,15 @@ for (i in filenames) {
     # http://www.fon.hum.uva.nl/praat/manual/Sound__To_Pitch___.html
     praat("To Pitch (ac)...", 
           arguments=list(0, # time step (s)
-                         75, # pitch floor (Hz)
+                         150, # pitch floor (Hz) - default 75
                          15, # max number of candidates
                          "no", # very accurate
-                         0.03, # silence threshold
+                         0.15, # silence threshold - default 0.03
                          0.45, # voicing threshold
                          0.01, # octave cost
                          0.35, # octave-jump cost
                          0.14, # voiced/unvoiced cost 
-                         600), # pitch ceiling (Hz)
+                         300), # pitch ceiling (Hz) - default 600
           input=FullPath(i), 
           output=FullPath("pitch_track"), 
           overwrite=TRUE
