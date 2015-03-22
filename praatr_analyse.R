@@ -109,12 +109,12 @@ qplot(minimumPitch, maximumPitch, data = cleanNatEn, geom = c("point", "smooth")
 plotPitchCh <- 
   ggplot(cleanNatCh, aes(minimumPitch, maximumPitch, color=session)) + 
   geom_point(shape=1) +
-  labs(title="Native Chinese")
+  labs(title="Native Chinese") + xlim(125, 250) + ylim(180, 320)
 
 plotPitchEn <-
   ggplot(cleanNatEn, aes(minimumPitch, maximumPitch, color=session)) + 
   geom_point(shape=1) +
-  labs(title="Native English")
+  labs(title="Native English") + xlim(125, 250) + ylim(180, 320)
 #   qplot(minimumPitch, maximumPitch, data = cleanNatEn, colour = session) + 
 #   ggtitle("Pitch English")
 
