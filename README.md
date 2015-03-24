@@ -33,7 +33,7 @@
 1.	Plot individual files using .avg files (created with Tim’s script) using `ffr_plot_ind_loop.R`
 
 ## Create .avg files from .txt (Response in Brainstem Toolbox):
-1.	Use `bt_txt2avg.m` in BT2008
+1.	Use `bt_txt2avg.m` in BT2013
 ```
 bt_txt2avg('filename.txt', 6855, -15.8, 58.89)
 ```
@@ -45,7 +45,7 @@ bt_txt2avg('perc-fall.txt', 16384, -49, 250)
 Use the script: `txt2avg_script.m`
 
 ## Create .avg files from .wav (Stimulus in Brainstem Toolbox):
-1.	BT2008 must be the current Matlab folder
+1.	BT2013 must be the current Matlab folder
 2.	Use the command 
 ```
 wav2avg('xxxxxxx_self_01.wav', 16384)
@@ -53,7 +53,7 @@ wav2avg('xxxxxxx_self_01.wav', 16384)
 The sampling rate of stimulus and response avg file has to be the same.
 
 ## Use Butterworth band pass filter on the wav files and save the filtered data to an avg file:
-`wavButter.m`
+1. Run the script `wavButter.m`
 
 ## Create .wav files from .txt (FFRs):
 1. In R:
