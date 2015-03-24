@@ -52,6 +52,9 @@ wav2avg('xxxxxxx_self_01.wav', 16384)
 ```
 The sampling rate of stimulus and response avg file has to be the same.
 
+## Use Butterworth band pass filter on the wav files and save the filtered data to an avg file:
+`wavButter.m`
+
 ## Create .wav files from .txt (FFRs):
 1. In R:
 ```
