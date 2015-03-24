@@ -10,7 +10,7 @@ fs = 16384; % sampling frequency (Hz)
 
 % run the butterworth filter on normalised values
 % 2nd order; 70 low cut-off and 2000 high cut-off are used for filtering
-% in in eeglab_ABR.m
+% in eeglab_ABR.m
 [b,a] = butter(2, [70 2000]/(fs/2), 'bandpass');
 % apply the filter to the loaded wav file
 wavStimulusFilt = filter(b,a,wavStimulus);
