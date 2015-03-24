@@ -18,3 +18,6 @@ wavStimulusFilt = filter(b,a,wavStimulus);
 prefix = 'filtered';
 outputFilename = strcat(prefix, filename);
 wavwrite(wavStimulusFilt, fs, outputFilename);
+% BT's function - transforms wav to avg
+% BT has to be added to the path
+wav2avg(outputFilename, fs);
