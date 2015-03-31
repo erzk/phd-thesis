@@ -1,5 +1,3 @@
-% developed by Dr Helen Nuttall (h.nuttall AT ucl DOT ac DOT uk)
-
 function [Y,f] = doFFT(y,L,Fs) 
 % This function computes an FFT of a signal and plots it
 % Input arguments: y = FFR; L = the length of the FFR; FS = sampling frequency on FFR
