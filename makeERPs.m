@@ -66,3 +66,5 @@ fprintf('==========Starting subject %d: %s%s%s==========\n', s, subject_list{s},
     ERP = pop_savemyerp(ERP, 'erpname', [subject condition participant], 'filename', [subject condition participant '.erp'], 'filepath', parentfolder, 'warning', 'on');
     EEG = eeg_checkset( EEG );
 end;
+
+close all;
