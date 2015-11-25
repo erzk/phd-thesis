@@ -40,7 +40,7 @@ bt_txt2avg('filename.txt', 6855, -15.8, 58.89)
 where filename.txt is the exported brainstem data file, 6855 is the sampling rate, -15.8 corresponds to the start time (ms) of the response epoch and 58.89 corresponds to the time at the end the response epoch. (In this example, the recording window is 74.69 ms)
 e.g.
 ```
-bt_txt2avg('perc-fall.txt', 16384, -49, 250)
+bt_txt2avg('perc-fall.txt', 16384, -49, 350)
 ```
 Use the script: `txt2avg_script.m`
 
