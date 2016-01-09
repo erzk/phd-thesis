@@ -20,7 +20,6 @@ txt2praat <- function(x, filename) {
                       ".txt",
                       sep = ""
     )
-    #filename <- deparse(substitute(filename))
   }
   
   # read as a vector
