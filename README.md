@@ -63,6 +63,10 @@ library(seewave)
 savewav(FFR_vector, f = 16384)
 ```
 
+## Prepare txt files to be loaded into Praat:
+1. Find the output of `gogo_loop.m`
+2. Use `txt2praat.R`
+
 ## Brainstem Toolbox:
 [Download BT](http://www.brainvolts.northwestern.edu/form/freeware.php)
 
