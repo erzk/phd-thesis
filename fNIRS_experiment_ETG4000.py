@@ -1,7 +1,7 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 """
-This experiment was created using PsychoPy2 Experiment Builder (v1.83.04), October 22, 2017, at 12:54
+This experiment was created using PsychoPy2 Experiment Builder (v1.83.04), November 05, 2017, at 15:14
 If you publish work using this script please cite the relevant PsychoPy publications
   Peirce, JW (2007) PsychoPy - Psychophysics software in Python. Journal of Neuroscience Methods, 162(1-2), 8-13.
   Peirce, JW (2009) Generating stimuli for neuroscience using PsychoPy. Frontiers in Neuroinformatics, 2:10. doi: 10.3389/neuro.11.010.2008
@@ -66,17 +66,17 @@ from time import sleep
 port = serial.Serial('COM1', 9600, timeout=0)
 port.write('ST\r') # harcoded end command
 introduction = visual.TextStim(win=win, ori=0, name='introduction',
-    text=u'Welcome to the experiment.\n\nYou will hear repeated /a/ sounds.\n\nThere will be four conditions in this experiment.\nEach condition will contain 10 blocks of 30 repetitions.\n\nPress SPACE to continue',    font=u'Arial',
+    text='Welcome to the experiment.\n\nYou will hear repeated /a/ sounds.\n\nThere will be four conditions in this experiment.\nEach condition will contain 10 blocks of 30 repetitions.\n\nPress SPACE to continue',    font='Arial',
     pos=[0, 0], height=0.1, wrapWidth=None,
-    color=u'white', colorSpace='rgb', opacity=1,
+    color='white', colorSpace='rgb', opacity=1,
     depth=-1.0)
 
 # Initialize components for Routine "instructions_baseline"
 instructions_baselineClock = core.Clock()
 text_baseline = visual.TextStim(win=win, ori=0, name='text_baseline',
-    text='Sit back and relax while \nyour baseline brain activity is being measured.\n\nIt will take a couple of minutes.\n\nYou will be notified when the trial is over.\n\nPress SPACE to start.',    font='Arial',
+    text=u'Sit back and relax while \nyour baseline brain activity is being measured.\n\nIt will take one minute.\n\nYou will be notified when the trial is over.\n\nPress SPACE to start.',    font=u'Arial',
     pos=[0, 0], height=0.1, wrapWidth=None,
-    color='white', colorSpace='rgb', opacity=1,
+    color=u'white', colorSpace='rgb', opacity=1,
     depth=0.0)
 
 # Initialize components for Routine "block_J_baseline"
@@ -96,9 +96,9 @@ thank_you = visual.TextStim(win=win, ori=0, name='thank_you',
     color='white', colorSpace='rgb', opacity=1,
     depth=0.0)
 text_perception = visual.TextStim(win=win, ori=0, name='text_perception',
-    text=u'The next condition that you will hear will involve passive listening.\n\nPlease sit back and try to remain steady.\n\nYou will be presented with 10 blocks of 30 repetitions of the /a/ stimulus.\n\nOnce a block finishes, please press SPACE to continue.\n\nPress SPACE to start.',    font=u'Arial',
+    text='The next condition that you will hear will involve passive listening.\n\nPlease sit back and try to remain steady.\n\nYou will be presented with 10 blocks of 30 repetitions of the /a/ stimulus.\n\nOnce a block finishes, please press SPACE to continue.\n\nPress SPACE to start.',    font='Arial',
     pos=[0, 0], height=0.1, wrapWidth=None,
-    color=u'white', colorSpace='rgb', opacity=1,
+    color='white', colorSpace='rgb', opacity=1,
     depth=-1.0)
 
 # Initialize components for Routine "block_B"
@@ -123,9 +123,9 @@ block_BClock = core.Clock()
 # Initialize components for Routine "instructions_within_condition"
 instructions_within_conditionClock = core.Clock()
 text_within_condition = visual.TextStim(win=win, ori=0, name='text_within_condition',
-    text='Press SPACE when you are ready to rest.\n\nIt will take around 15 seconds.\n',    font='Arial',
+    text=u'Press SPACE when you are ready to rest.\n\nIt will take around 15 seconds.\n\nThe testing condition will resume after the rest.',    font=u'Arial',
     pos=[0, 0], height=0.1, wrapWidth=None,
-    color='white', colorSpace='rgb', opacity=1,
+    color=u'white', colorSpace='rgb', opacity=1,
     depth=0.0)
 
 # Initialize components for Routine "pause_within_block_I"
@@ -167,9 +167,9 @@ block_DClock = core.Clock()
 # Initialize components for Routine "instructions_within_condition"
 instructions_within_conditionClock = core.Clock()
 text_within_condition = visual.TextStim(win=win, ori=0, name='text_within_condition',
-    text='Press SPACE when you are ready to rest.\n\nIt will take around 15 seconds.\n',    font='Arial',
+    text=u'Press SPACE when you are ready to rest.\n\nIt will take around 15 seconds.\n\nThe testing condition will resume after the rest.',    font=u'Arial',
     pos=[0, 0], height=0.1, wrapWidth=None,
-    color='white', colorSpace='rgb', opacity=1,
+    color=u'white', colorSpace='rgb', opacity=1,
     depth=0.0)
 
 # Initialize components for Routine "pause_within_block_I"
@@ -184,9 +184,9 @@ pause_fixation = visual.TextStim(win=win, ori=0, name='pause_fixation',
 # Initialize components for Routine "instructions_silent_mouthing"
 instructions_silent_mouthingClock = core.Clock()
 text_silent_mouthing = visual.TextStim(win=win, ori=0, name='text_silent_mouthing',
-    text='In this trial you will hear the same /a/ sound as in the previous conditions.\n\nThis time your task is to imagine that you are producing the /a/ sound but\nwithout actually saying it.\n\nTry to keep your mouth steady and do not move during this condition.\n\nThere will be 5 blocks of 30 repetitions of the stimulus.\n\nPress SPACE when you are ready to continue.',    font='Arial',
+    text=u'In this trial you will hear the same /a/ sound as in the previous conditions.\n\nThis time your task is to imagine that you are producing the /a/ sound but\nwithout actually saying it.\n\nTry to keep your mouth steady and do not move during this condition.\n\nThere will be 10 blocks of 30 repetitions of the stimulus.\n\nPress SPACE when you are ready to continue.',    font=u'Arial',
     pos=[0, 0], height=0.1, wrapWidth=None,
-    color='white', colorSpace='rgb', opacity=1,
+    color=u'white', colorSpace='rgb', opacity=1,
     depth=0.0)
 
 # Initialize components for Routine "block_F"
@@ -211,9 +211,9 @@ block_FClock = core.Clock()
 # Initialize components for Routine "instructions_within_condition"
 instructions_within_conditionClock = core.Clock()
 text_within_condition = visual.TextStim(win=win, ori=0, name='text_within_condition',
-    text='Press SPACE when you are ready to rest.\n\nIt will take around 15 seconds.\n',    font='Arial',
+    text=u'Press SPACE when you are ready to rest.\n\nIt will take around 15 seconds.\n\nThe testing condition will resume after the rest.',    font=u'Arial',
     pos=[0, 0], height=0.1, wrapWidth=None,
-    color='white', colorSpace='rgb', opacity=1,
+    color=u'white', colorSpace='rgb', opacity=1,
     depth=0.0)
 
 # Initialize components for Routine "pause_within_block_I"
@@ -228,7 +228,7 @@ pause_fixation = visual.TextStim(win=win, ori=0, name='pause_fixation',
 # Initialize components for Routine "instructions_self_production"
 instructions_self_productionClock = core.Clock()
 text_self_production = visual.TextStim(win=win, ori=0, name='text_self_production',
-    text=u'In this trial you will NOT hear the sound.\n\nThis time your task is to produce the /a/ sound that you heard in the previous conditions.\n\nYou will not hear the sound played.\n\nTry to keep your mouth steady and do not move during this condition.\n\nPlease continue to produce the /a/ sound\nuntil you see the information to relax.\nTry to keep the same pace as in the previous conditions.\n\nThere will be 10 blocks of your utterances.\n\nPress SPACE to start.',    font=u'Arial',
+    text=u'In this trial you will NOT hear the sound.\nThis time your task is to produce the /a/ sound that you heard in the previous conditions.\n\nTry to keep your mouth steady and do not move during this condition.\n\nPlease continue to produce the /a/ sound\nuntil you see the information to relax.\nTry to keep the same pace as in the previous conditions.\n\nThere will be 10 blocks of 30 repetitions.\nPress SPACE to start.',    font=u'Arial',
     pos=[0, 0], height=0.1, wrapWidth=None,
     color=u'white', colorSpace='rgb', opacity=1,
     depth=0.0)
@@ -258,9 +258,9 @@ block_HClock = core.Clock()
 # Initialize components for Routine "instructions_within_condition"
 instructions_within_conditionClock = core.Clock()
 text_within_condition = visual.TextStim(win=win, ori=0, name='text_within_condition',
-    text='Press SPACE when you are ready to rest.\n\nIt will take around 15 seconds.\n',    font='Arial',
+    text=u'Press SPACE when you are ready to rest.\n\nIt will take around 15 seconds.\n\nThe testing condition will resume after the rest.',    font=u'Arial',
     pos=[0, 0], height=0.1, wrapWidth=None,
-    color='white', colorSpace='rgb', opacity=1,
+    color=u'white', colorSpace='rgb', opacity=1,
     depth=0.0)
 
 # Initialize components for Routine "pause_within_block_I"
@@ -271,6 +271,14 @@ pause_fixation = visual.TextStim(win=win, ori=0, name='pause_fixation',
     color='white', colorSpace='rgb', opacity=1,
     depth=0.0)
 
+
+# Initialize components for Routine "instructions_restart_self_prod"
+instructions_restart_self_prodClock = core.Clock()
+self_restart_instruction = visual.TextStim(win=win, ori=0, name='self_restart_instruction',
+    text=u'The rest is over.\n\nStart saying /a/ when the cross reappears.',    font=u'Arial',
+    pos=[0, 0], height=0.1, wrapWidth=None,
+    color=u'white', colorSpace='rgb', opacity=1,
+    depth=0.0)
 
 # Initialize components for Routine "end"
 endClock = core.Clock()
@@ -603,7 +611,7 @@ thisExp.nextEntry()
 routineTimer.reset()
 
 # set up handler to look after randomisation of conditions etc
-perception_loop = data.TrialHandler(nReps=2, method='sequential', 
+perception_loop = data.TrialHandler(nReps=10, method='sequential', 
     extraInfo=expInfo, originPath=-1,
     trialList=[None],
     seed=None, name='perception_loop')
@@ -947,7 +955,7 @@ for thisPerception_loop in perception_loop:
     sleep(0.2)
     thisExp.nextEntry()
     
-# completed 2 repeats of 'perception_loop'
+# completed 10 repeats of 'perception_loop'
 
 
 #------Prepare to start Routine "instructions_shadowing"-------
@@ -1034,7 +1042,7 @@ thisExp.nextEntry()
 routineTimer.reset()
 
 # set up handler to look after randomisation of conditions etc
-shadowing_loop = data.TrialHandler(nReps=2, method='sequential', 
+shadowing_loop = data.TrialHandler(nReps=10, method='sequential', 
     extraInfo=expInfo, originPath=-1,
     trialList=[None],
     seed=None, name='shadowing_loop')
@@ -1378,7 +1386,7 @@ for thisShadowing_loop in shadowing_loop:
     sleep(0.2)
     thisExp.nextEntry()
     
-# completed 2 repeats of 'shadowing_loop'
+# completed 10 repeats of 'shadowing_loop'
 
 
 #------Prepare to start Routine "instructions_silent_mouthing"-------
@@ -1465,7 +1473,7 @@ thisExp.nextEntry()
 routineTimer.reset()
 
 # set up handler to look after randomisation of conditions etc
-silent_loop = data.TrialHandler(nReps=2, method='sequential', 
+silent_loop = data.TrialHandler(nReps=10, method='sequential', 
     extraInfo=expInfo, originPath=-1,
     trialList=[None],
     seed=None, name='silent_loop')
@@ -1809,7 +1817,7 @@ for thisSilent_loop in silent_loop:
     sleep(0.2)
     thisExp.nextEntry()
     
-# completed 2 repeats of 'silent_loop'
+# completed 10 repeats of 'silent_loop'
 
 
 #------Prepare to start Routine "instructions_self_production"-------
@@ -1896,7 +1904,7 @@ thisExp.nextEntry()
 routineTimer.reset()
 
 # set up handler to look after randomisation of conditions etc
-self_loop = data.TrialHandler(nReps=2, method='sequential', 
+self_loop = data.TrialHandler(nReps=10, method='sequential', 
     extraInfo=expInfo, originPath=-1,
     trialList=[None],
     seed=None, name='self_loop')
@@ -2239,9 +2247,61 @@ for thisSelf_loop in self_loop:
             thisComponent.setAutoDraw(False)
     port.write('I \r')
     sleep(0.2)
+    
+    #------Prepare to start Routine "instructions_restart_self_prod"-------
+    t = 0
+    instructions_restart_self_prodClock.reset()  # clock 
+    frameN = -1
+    routineTimer.add(3.000000)
+    # update component parameters for each repeat
+    # keep track of which components have finished
+    instructions_restart_self_prodComponents = []
+    instructions_restart_self_prodComponents.append(self_restart_instruction)
+    for thisComponent in instructions_restart_self_prodComponents:
+        if hasattr(thisComponent, 'status'):
+            thisComponent.status = NOT_STARTED
+    
+    #-------Start Routine "instructions_restart_self_prod"-------
+    continueRoutine = True
+    while continueRoutine and routineTimer.getTime() > 0:
+        # get current time
+        t = instructions_restart_self_prodClock.getTime()
+        frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+        # update/draw components on each frame
+        
+        # *self_restart_instruction* updates
+        if t >= 0.0 and self_restart_instruction.status == NOT_STARTED:
+            # keep track of start time/frame for later
+            self_restart_instruction.tStart = t  # underestimates by a little under one frame
+            self_restart_instruction.frameNStart = frameN  # exact frame index
+            self_restart_instruction.setAutoDraw(True)
+        if self_restart_instruction.status == STARTED and t >= (0.0 + (3.0-win.monitorFramePeriod*0.75)): #most of one frame period left
+            self_restart_instruction.setAutoDraw(False)
+        
+        # check if all components have finished
+        if not continueRoutine:  # a component has requested a forced-end of Routine
+            break
+        continueRoutine = False  # will revert to True if at least one component still running
+        for thisComponent in instructions_restart_self_prodComponents:
+            if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+                continueRoutine = True
+                break  # at least one component has not yet finished
+        
+        # check for quit (the Esc key)
+        if endExpNow or event.getKeys(keyList=["escape"]):
+            core.quit()
+        
+        # refresh the screen
+        if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+            win.flip()
+    
+    #-------Ending Routine "instructions_restart_self_prod"-------
+    for thisComponent in instructions_restart_self_prodComponents:
+        if hasattr(thisComponent, "setAutoDraw"):
+            thisComponent.setAutoDraw(False)
     thisExp.nextEntry()
     
-# completed 2 repeats of 'self_loop'
+# completed 10 repeats of 'self_loop'
 
 
 #------Prepare to start Routine "end"-------
