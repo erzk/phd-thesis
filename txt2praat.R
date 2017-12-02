@@ -23,7 +23,7 @@ txt2praat <- function(x, filename) {
   }
   
   # read as a vector
-  x <- as.character(scan(x))  
+  #x <- as.character(scan(x))  
   
   # header needed to read txt into Praat
   praat_header <- c('File type = "ooTextFile"',
