@@ -81,5 +81,6 @@ savewav(FFR_vector, f = 16384)
 4. Channel order for plotting ERPs:  1 5 6 2 7 8 3 4 9
 
 ## fNIRS analysis
-1. Select software OpenGL rendering in Matlab (to enable plotting in Homer2)@
+1. Select software OpenGL rendering in Matlab (to enable plotting in Homer2):
+
 `matlab -softwareopengl`
