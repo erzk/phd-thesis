@@ -79,3 +79,7 @@ savewav(FFR_vector, f = 16384)
 2. Run ICA on filtered/epoched data using `ICA_loop_catch.m`
 3. Average ERPs and append them
 4. Channel order for plotting ERPs:  1 5 6 2 7 8 3 4 9
+
+## fNIRS analysis
+1. Select software OpenGL rendering in Matlab (to enable plotting in Homer2)@
+`matlab -softwareopengl`
