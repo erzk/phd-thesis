@@ -4,11 +4,11 @@
 library(ggpubr)
 library(readxl)
 library(scales)
-
+library(dplyr)
+library(lme4)
 # show ggplot2 colours
 show_col(hue_pal()(2))
 
-# df <- read_excel("E:\\ABR-Training\\RESULTS\\Behavioural_Alvin2\\training_both_alvin2_results_cleaned.xlsx") - 1000 x 500
 df <- read_excel("/media/eub/MyPassport/ABR-Training/RESULTS/Behavioural_Alvin2/training_both_alvin2_results_cleaned.xlsx")
 
 # filename: "exp2_training_tone_discrimination.png"
@@ -57,12 +57,10 @@ ggline(df_with_blank, x = "Session", y = "Correct",
        x = "Session", y = "Correct responses")
 
 # export
-ggsave("exp2_training_tone_discrimination.pdf",
-       width = 6, height = 4)
+#ggsave("exp2_training_tone_discrimination.pdf",
+#       width = 6, height = 4)
 
 ### Anova
-library(dplyr)
-
 model_beh <- aov(Correct ~ Tone*Session,
                  df %>% filter(Native == "English"))
 summary(model_beh)
@@ -71,3 +69,43 @@ plot(model_beh)
 # descriptives
 df %>% filter(Native == "English") %>% group_by(Tone) %>% summarise(mean(Correct))
 df %>% filter(Native == "English") %>% group_by(Tone, Session) %>% summarise(mean(Correct))
+
+# GLMM
+df_with_blank$Native <- as.factor(df_with_blank$Native)
+df_with_blank$Tone <- as.factor(df_with_blank$Tone)
+df_with_blank$Session <- as.factor(df_with_blank$Session)
+df_with_blank$Stimulus <- as.factor(df_with_blank$Stimulus)
+
+# fit the models
+library(lmerTest)
+
+t1_beh_m1 <-
+  glmer(Correct ~ Native + Session + Tone +
+          (1 | Native),
+        #(1 + Stimulus | Native) # would not converge
+        family = "binomial",
+        data = df_with_blank %>% filter(Session != "2"))
+
+summary(t1_beh_m1)
+anova(t1_beh_m1)
+
+# model 2
+t1_beh_m2 <-
+  glmer(Correct ~ Native + Session +
+          (1 | Native),
+        family = "binomial",
+        data = df_with_blank %>% filter(Session != "2"))
+
+# model 3
+t1_beh_m3 <-
+  glmer(Correct ~ Native + Tone +
+          (1 | Native),
+        family = "binomial",
+        data = df_with_blank %>% filter(Session != "2"))
+
+summary(t1_beh_m3)
+anova(t1_beh_m3)
+
+# compare two models
+anova(t1_beh_m1, t1_beh_m2) # tone
+anova(t1_beh_m1, t1_beh_m3) # session
